@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>霹靂暴龍售賣店 | 頂級恐龍坐騎專賣與試騎體驗</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-pink: #ff2a85;
+      --primary-hover: #e01b70;
+      --soft-pink: #ffe6f0;
+      --pastel-pink: #fbcfe8;
+      --light-pink-bg: #fff5f8;
+      --dark-plum: #21091a;
+      --deep-wine: #38102e;
+      --card-bg: #ffffff;
+      --text-main: #2a1124;
+      --text-muted: #6b4d63;
+      --text-light: #fdf2f8;
+      --border-pink: #f9a8d4;
+      --accent-gold: #f59e0b;
+      --shadow-pink: 0 10px 30px rgba(255, 42, 133, 0.18);
+      --shadow-card: 0 14px 34px rgba(60, 16, 48, 0.08);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --radius-full: 9999px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-main);
+      background-color: var(--light-pink-bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--pastel-pink);
+      box-shadow: 0 4px 20px rgba(255, 42, 133, 0.06);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--primary-pink);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #ff2a85, #ff80bf);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(255, 42, 133, 0.3);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: block;
+      letter-spacing: 1.5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-pink);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--primary-pink);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-pink) 0%, #ff62a5 100%);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(255, 42, 133, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #e01b70 0%, #ff4b93 100%);
+      box-shadow: 0 8px 25px rgba(255, 42, 133, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--primary-pink);
+      border: 2px solid var(--primary-pink);
+    }
+
+    .btn-secondary:hover {
+      background: var(--soft-pink);
+      transform: translateY(-2px);
+    }
+
+    .btn-glow {
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 42, 133, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(255, 42, 133, 0.7);
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #2b0b22 0%, #4a153b 60%, #1f0618 100%);
+      color: #ffffff;
+      padding: 100px 0 130px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 42, 133, 0.28) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 42, 133, 0.2);
+      border: 1px solid rgba(255, 42, 133, 0.4);
+      border-radius: var(--radius-full);
+      color: #ff94c2;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      line-height: 1.25;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #ff69b4, #ff2a85, #ffb3d9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: #fce7f3;
+      margin-bottom: 36px;
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 28px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: #ff69b4;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #d1b3c4;
+    }
+
+    /* Hero Illustration Card */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dino-showcase-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 105, 180, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 42, 133, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 28px;
+      padding: 36px 30px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dino-avatar {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff2a85 0%, #38102e 80%);
+      border: 4px solid #ff80bf;
+      box-shadow: 0 0 30px rgba(255, 42, 133, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      transition: transform 0.4s ease;
+    }
+
+    .dino-showcase-card:hover .dino-avatar {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    .dino-card-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff2a85, #ff80bf);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .dino-card-name {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .dino-card-desc {
+      font-size: 0.95rem;
+      color: #fbcfe8;
+      margin-bottom: 20px;
+    }
+
+    .dino-specs-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+    }
+
+    .dino-specs-mini span {
+      display: block;
+      color: #ff94c2;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Section Header */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-subtitle {
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--primary-pink);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--dark-plum);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-pink);
+      border-radius: 2px;
+      margin: 12px auto 0;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 16px auto 0;
+    }
+
+    /* Brand Value / Experience Section */
+    .experience {
+      padding: 90px 0;
+      background: #ffffff;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: var(--light-pink-bg);
+      border: 1px solid var(--soft-pink);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-pink);
+      border-color: var(--primary-pink);
+    }
+
+    .feature-icon-box {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: #ffffff;
+      border: 2px solid var(--pastel-pink);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 8px 16px rgba(255, 42, 133, 0.1);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover .feature-icon-box {
+      background: var(--primary-pink);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--dark-plum);
+    }
+
+    .feature-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Product Showcase (恐龍坐騎車庫) */
+    .products {
+      padding: 100px 0;
+      background: var(--light-pink-bg);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 36px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--pastel-pink);
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(255, 42, 133, 0.18);
+      border-color: var(--primary-pink);
+    }
+
+    .product-badge-wrap {
+      position: relative;
+      background: linear-gradient(135deg, #300c25 0%, #541940 100%);
+      padding: 40px 20px 30px;
+      text-align: center;
+      color: white;
+    }
+
+    .product-category-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 42, 133, 0.9);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .product-rating {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      color: #fbbf24;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .product-figure {
+      font-size: 4.8rem;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-figure {
+      transform: scale(1.12);
+    }
+
+    .product-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .product-series {
+      font-size: 0.85rem;
+      color: #ff9ec9;
+      letter-spacing: 1px;
+    }
+
+    .product-content {
+      padding: 26px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .specs-table {
+      width: 100%;
+      margin-bottom: 24px;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .specs-table td {
+      padding: 8px 0;
+      border-bottom: 1px dashed #fce7f3;
+    }
+
+    .specs-table td:first-child {
+      color: var(--text-muted);
+    }
+
+    .specs-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--dark-plum);
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--soft-pink);
+      padding-top: 18px;
+    }
+
+    .product-price {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--primary-pink);
+    }
+
+    .product-price span {
+      font-size: 0.8rem;
+      font-weight: normal;
+      color: var(--text-muted);
+    }
+
+    /* Ride Booking Section (吸引客戶騎乘恐龍的核心區塊) */
+    .ride-booking {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #1f0817 0%, #3d1232 100%);
+      color: #ffffff;
+      position: relative;
+    }
+
+    .booking-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .booking-info h2 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+
+    .booking-info p {
+      font-size: 1.05rem;
+      color: #fbcfe8;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .booking-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .booking-perks li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.98rem;
+      color: #fdf2f8;
+    }
+
+    .perk-bullet {
+      width: 24px;
+      height: 24px;
+      background: var(--primary-pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .booking-form-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      color: var(--text-main);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      border: 2px solid var(--pastel-pink);
+    }
+
+    .booking-form-box h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--dark-plum);
+      margin-bottom: 8px;
+    }
+
+    .booking-form-box p.form-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--dark-plum);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #f9a8d4;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text-main);
+      background-color: var(--light-pink-bg);
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-pink);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(255, 42, 133, 0.15);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Testimonials (恐龍騎手心得) */
+    .reviews {
+      padding: 90px 0;
+      background: #ffffff;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .review-card {
+      background: var(--light-pink-bg);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      border: 1px solid var(--soft-pink);
+      position: relative;
+    }
+
+    .review-stars {
+      color: #fbbf24;
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .review-quote {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .reviewer-avatar {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #ff80bf, #ff2a85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .reviewer-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark-plum);
+    }
+
+    .reviewer-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: 90px 0;
+      background: var(--light-pink-bg);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid var(--pastel-pink);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: var(--primary-pink);
+    }
+
+    .faq-question {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--dark-plum);
+      user-select: none;
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      color: var(--primary-pink);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      padding: 0 24px 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Footer */
+    footer {
+      background: #190514;
+      color: #fce7f3;
+      padding: 70px 0 30px;
+      border-top: 4px solid var(--primary-pink);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand h4 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #ff69b4;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: #d1b3c4;
+      line-height: 1.7;
+    }
+
+    .footer-links h5 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 0.9rem;
+      color: #d1b3c4;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: #ff80bf;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 25px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #a68199;
+    }
+
+    /* Modal / Popup for Booking Confirmation */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(255, 42, 133, 0.3);
+      border: 3px solid var(--primary-pink);
+      transform: scale(0.85);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-dino {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    .modal-box h3 {
+      font-size: 1.6rem;
+      color: var(--primary-pink);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .modal-box p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-grid, .booking-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .hero {
+        padding: 60px 0 80px;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-badge">🦖</div>
+        <div>
+          <span>霹靂暴龍售賣店</span>
+          <span class="brand-sub">THUNDER T-REX MOUNTS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#about" class="nav-link">品牌傳奇</a></li>
+        <li><a href="#models" class="nav-link">尊榮霸王龍車庫</a></li>
+        <li><a href="#features" class="nav-link">駕馭特色</a></li>
+        <li><a href="#booking" class="nav-link">試騎預約</a></li>
+        <li><a href="#reviews" class="nav-link">騎手評價</a></li>
+        <li><a href="#faq" class="nav-link">常見問題</a></li>
+      </ul>
+
+      <a href="#booking" class="btn btn-primary btn-glow">立即預約試騎 ⚡</a>
+    </div>
+  </header>
+
+  <!-- 首頁主視覺 (Hero) -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span>💖</span> 頂級高階霸王龍坐騎 · 粉鑽奢華版上市
+        </div>
+        <h1 class="hero-title">
+          極速咆哮 · 尊榮駕馭！<br>
+          <span class="highlight">征服地表最強恐龍坐騎</span>
+        </div>
+        <p class="hero-desc">
+          專為熱愛恐龍的尊爵騎士量身打造。融合極致暴龍狂暴基因與優雅粉紅美學，搭載智慧神經感應鞍座，給您前所未有的心跳震懾與俯瞰王者的奔馳快感！
+        </p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">搶先預約免費試騎 ➜</a>
+          <a href="#models" class="btn btn-secondary">探索三款霸王龍旗艦</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">純種暴龍血統</div>
+          </div>
+          <div>
+            <div class="stat-number">120 km/h</div>
+            <div class="stat-label">頂級奔馳時速</div>
+          </div>
+          <div>
+            <div class="stat-number">0 事故</div>
+            <div class="stat-label">AI神經鞍座安全防護</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dino-showcase-card">
+          <div class="dino-card-badge">年度旗艦首選 · 限量交付</div>
+          <div class="dino-avatar">🦖</div>
+          <h3 class="dino-card-name">粉鑽極光暴君 TX-9</h3>
+          <p class="dino-card-desc">高階霸王龍特仕版 · 櫻粉色鈦合金鱗甲</p>
+          <div class="dino-specs-mini">
+            <div>咬合力 <span>4.5 噸</span></div>
+            <div>巡航速 <span>105 km/h</span></div>
+            <div>舒適度 <span>S+級</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌理念與駕馭特點 -->
+  <section class="experience" id="about">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-subtitle">Royal Dinosaur Experience</div>
+        <h2 class="section-title">為什麼選擇霹靂暴龍坐騎？</h2>
+        <p class="section-desc">我們打破恐龍只屬於博物館的想像，結合高端基因科技與奢華美學，為每位恐龍狂熱者帶來安全又震撼的騎乘日常。</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">🧠</div>
+          <h3 class="feature-title">神經感應智慧鞍座</h3>
+          <p class="feature-text">採用次世代腦波微電流感測器，人龍意念合一，輕撫韁繩即可無延遲轉向、加速與煞停。</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🌸</div>
+          <h3 class="feature-title">粉系尊榮高階美學</h3>
+          <p class="feature-text">專屬粉紅珍珠光澤角質層，搭配玫瑰金奢華配件，打破霸王龍粗獷刻板印象，霸氣中流露絕美時尚。</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🛡️</div>
+          <h3 class="feature-title">多重安全鎖定系統</h3>
+          <p class="feature-text">內建自動避障防跌倒氣囊與基因溫馴調控晶片，無論市區漫步或荒野狂飆，安全始終是第一準則。</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">⚡</div>
+          <h3 class="feature-title">霹靂級推進爆發力</h3>
+          <p class="feature-text">暴龍腿部肌肉強化科技，零至百公里起步加速僅需 3.2 秒，跨坐其上感受大地為之震顫的無敵霸氣！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 旗艦恐龍坐騎型號展售 (高階霸王龍系列) -->
+  <section class="products" id="models">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-subtitle">Flagship Mount Garage</div>
+        <h2 class="section-title">高階霸王龍坐騎系列</h2>
+        <p class="section-desc">每一頭霸王龍皆經過五年皇家馴獸師親自調校，擁有最頂級的血統證明與全套尊榮粉紅鞍座。</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- 產品 1 -->
+        <div class="product-card">
+          <div class="product-badge-wrap">
+            <span class="product-category-tag">熱銷王者</span>
+            <span class="product-rating">★ 4.9 (128人已購)</span>
+            <div class="product-figure">🦖</div>
+            <h3 class="product-name">粉鑽極光暴君 (Aurora TX)</h3>
+            <div class="product-series">高階旗艦 · 全地形制霸款</div>
+          </div>
+          <div class="product-content">
+            <p class="product-desc">
+              披覆稀有粉鑽光澤奈米鱗甲，日光下呈現浪漫漸層。適合追求極致速度與高回頭率的頂尖恐龍騎士。
+            </p>
+            <table class="specs-table">
+              <tr>
+                <td>座艙設計</td>
+                <td>雙人真皮減震豪華鞍</td>
+              </tr>
+              <tr>
+                <td>極限奔馳速度</td>
+                <td>115 km/h</td>
+              </tr>
+              <tr>
+                <td>能量來源</td>
+                <td>高蛋白生機恐龍糧</td>
+              </tr>
+              <tr>
+                <td>溫馴適應度</td>
+                <td>S級（超親人、護主）</td>
+              </tr>
+            </table>
+            <div class="product-footer">
+              <div class="product-price">$8,880,000 <span>/ 專屬訂製</span></div>
+              <a href="#booking" class="btn btn-primary" onclick="selectModel('粉鑽極光暴君 (Aurora TX)')">預約試騎</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 產品 2 -->
+        <div class="product-card">
+          <div class="product-badge-wrap">
+            <span class="product-category-tag">極速賽道</span>
+            <span class="product-rating">★ 5.0 (89人已購)</span>
+            <div class="product-figure">🦕</div>
+            <h3 class="product-name">櫻花狂暴速騎 (Sakura Sprint)</h3>
+            <div class="product-series">羽量級輕裝 · 競速穿梭款</div>
+          </div>
+          <div class="product-content">
+            <p class="product-desc">
+              精選修長流線型骨骼，搭配淡粉色碳纖維背鰭導流板。過彎靈敏俐落，讓你在荒野與城市間自由穿梭。
+            </p>
+            <table class="specs-table">
+              <tr>
+                <td>座艙設計</td>
+                <td>單人包覆式防滾架鞍座</td>
+              </tr>
+              <tr>
+                <td>極限奔馳速度</td>
+                <td>130 km/h</td>
+              </tr>
+              <tr>
+                <td>能量來源</td>
+                <td>高能濃縮果肉配方</td>
+              </tr>
+              <tr>
+                <td>溫馴適應度</td>
+                <td>A+級（活潑好動、靈動）</td>
+              </tr>
+            </table>
+            <div class="product-footer">
+              <div class="product-price">$7,200,000 <span>/ 專屬訂製</span></div>
+              <a href="#booking" class="btn btn-primary" onclick="selectModel('櫻花狂暴速騎 (Sakura Sprint)')">預約試騎</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 產品 3 -->
+        <div class="product-card">
+          <div class="product-badge-wrap">
+            <span class="product-category-tag">至尊巡航</span>
+            <span class="product-rating">★ 4.9 (64人已購)</span>
+            <div class="product-figure">🦹‍♂️</div>
+            <h3 class="product-name">璀璨女帝重裝龍 (Empress Rose)</h3>
+            <div class="product-series">重裝豪華 · 領袖尊榮款</div>
+          </div>
+          <div class="product-content">
+            <p class="product-desc">
+              擁有最龐大的威武體型與深粉紅金屬光甲冑，搭載全自動防震液壓平台，巡航時穩定如履平地，王者氣勢無可比擬。
+            </p>
+            <table class="specs-table">
+              <tr>
+                <td>座艙設計</td>
+                <td>四人景觀尊爵平台</td>
+              </tr>
+              <tr>
+                <td>極限奔馳速度</td>
+                <td>95 km/h</td>
+              </tr>
+              <tr>
+                <td>能量來源</td>
+                <td>頂級黑安格斯鮮肉</td>
+              </tr>
+              <tr>
+                <td>溫馴適應度</td>
+                <td>S+級（沉穩威嚴、沉著）</td>
+              </tr>
+            </table>
+            <div class="product-footer">
+              <div class="product-price">$12,000,000 <span>/ 專屬訂製</span></div>
+              <a href="#booking" class="btn btn-primary" onclick="selectModel('璀璨女帝重裝龍 (Empress Rose)')">預約試騎</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 吸引客戶騎乘恐龍：線上試騎預約專區 (核心功能) -->
+  <section class="ride-booking" id="booking">
+    <div class="container booking-wrapper">
+      <div class="booking-info">
+        <div class="hero-tag">🌟 VIP 專屬體驗通道</div>
+        <h2>親身感受跨上霸王龍的<br><span style="color:#ff69b4;">心跳與地表震撼！</span></h2>
+        <p>
+          不敢確定自己能不能駕馭霸王龍？我們提供一對一資深恐龍訓獸導師陪同試騎！全程配備安全氣囊保護裝備，30分鐘內帶你從零基礎到馳騁自如。
+        </p>
+
+        <ul class="booking-perks">
+          <li>
+            <div class="perk-bullet">✓</div>
+            <span>免費贈送尊榮粉紅騎士頭盔與專屬手套</span>
+          </li>
+          <li>
+            <div class="perk-bullet">✓</div>
+            <span>專業馴獸師一對一貼身指導與口令教學</span>
+          </li>
+          <li>
+            <div class="perk-bullet">✓</div>
+            <span>包含 1 億元暴龍駕馭公眾意外安全保險</span>
+          </li>
+          <li>
+            <div class="perk-bullet">✓</div>
+            <span>試騎完成即頒發「國際初級恐龍騎士執照認證」</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 預約表單 -->
+      <div class="booking-form-box">
+        <h3>預約您的霸王龍試騎體驗</h3>
+        <p class="form-note">填寫以下資料，專屬恐龍騎士管家將於 2 小時內為您確認場次</p>
+
+        <form id="rideForm" onsubmit="handleBooking(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="riderName">騎士姓名 *</label>
+              <input type="text" id="riderName" class="form-control" placeholder="例：謝小靜" required>
+            </div>
+            <div class="form-group">
+              <label for="riderPhone">聯絡電話 *</label>
+              <input type="tel" id="riderPhone" class="form-control" placeholder="0912-345-678" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dinoSelect">想要試騎的高階霸王龍型號 *</label>
+            <select id="dinoSelect" class="form-control" required>
+              <option value="粉鑽極光暴君 (Aurora TX)">粉鑽極光暴君 (Aurora TX) - 旗艦熱銷款</option>
+              <option value="櫻花狂暴速騎 (Sakura Sprint)">櫻花狂暴速騎 (Sakura Sprint) - 競速敏捷款</option>
+              <option value="璀璨女帝重裝龍 (Empress Rose)">璀璨女帝重裝龍 (Empress Rose) - 尊榮巡航款</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rideDate">預約日期 *</label>
+              <input type="date" id="rideDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="rideTime">時段選擇 *</label>
+              <select id="rideTime" class="form-control" required>
+                <option value="上午場 (10:00 - 11:30)">上午場 (10:00 - 11:30)</option>
+                <option value="下午場 (14:30 - 16:00)">下午場 (14:30 - 16:00)</option>
+                <option value="黃昏夕陽狂飆場 (17:00 - 18:30)">黃昏夕陽狂飆場 (17:00 - 18:30)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="experienceLevel">騎乘經驗等級</label>
+            <select id="experienceLevel" class="form-control">
+              <option value="新手小白（第一次接觸恐龍）">新手小白（第一次接觸恐龍）</option>
+              <option value="進階騎手（曾騎過迅猛龍或三角龍）">進階騎手（曾騎過迅猛龍或三角龍）</option>
+              <option value="狂暴大師（具備大型食肉龍駕駛執照）">狂暴大師（具備大型食肉龍駕駛執照）</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.05rem; margin-top: 10px;">
+            立即送出試騎預約單 🚀
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 騎乘者真實回饋評價 -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="section-subtitle">Rider Testimonials</div>
+        <h2 class="section-title">熱血騎士好評見證</h2>
+        <p class="section-desc">聽聽已經擁抱恐龍坐騎的車主與試騎學員們怎麼說！</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">「原本以為霸王龍很恐怖，沒想到這台粉鑽極光暴君超聽話！腦波鞍座只要心念一動就馬上轉向，在路上騎回頭率絕對百分之兩百！」</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">婷</div>
+            <div>
+              <div class="reviewer-name">林小姐（恐龍重機愛好者）</div>
+              <div class="reviewer-role">車主 · 入手粉鑽極光暴君 3 個月</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">「帶著家人去參加試騎體驗，教練超專業！粉紅色的外觀讓女生和小朋友完全不害怕，那種狂暴又溫馴的反差萌實在太迷人了，立刻下訂一頭！」</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">張</div>
+            <div>
+              <div class="reviewer-name">張先生（科技公司執行長）</div>
+              <div class="reviewer-role">學員 · 已下訂璀璨女帝重裝龍</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">「櫻花狂暴速騎的過彎爆發力簡直神乎其技！比超跑還過癮，而且完全不需要加油，每天只要餵牠好吃的肉肉，還會像大狗狗一樣蹭手撒嬌！」</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">陳</div>
+            <div>
+              <div class="reviewer-name">陳教練（極限運動選手）</div>
+              <div class="reviewer-role">車主 · 櫻花狂暴速騎資深騎手</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常見問答 (FAQ) -->
+  <section class="faq" id="faq">
+    <div class="container faq-container">
+      <div class="section-title-wrap">
+        <div class="section-subtitle">Got Questions?</div>
+        <h2 class="section-title">騎乘與購買常見問題</h2>
+        <p class="section-desc">解決您對恐龍坐騎的一切好奇與疑慮</p>
+      </div>
+
+      <div class="faq-item active">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>騎乘霸王龍需要專屬駕照嗎？</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          購買或試騎時，我們門市均提供完整的恐龍騎士訓練課程。完成 2 小時培訓後即可取得內政部認可的「特種生物坐騎騎乘憑證」，完全不用擔心無照問題！
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>霸王龍平常要吃什麼？保養費用高嗎？</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          我們的高階暴龍均經過基因溫馴調控，可適應專用高能濃縮恐龍凍乾或新鮮牛羊肉。每個月飼料約 1.2 萬元，本店亦提供終身保固與定期毛皮鱗甲粉鑽拋光保養套餐。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>如果恐龍在路上突然發脾氣怎麼辦？</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          每台鞍座均配備三重硬體安全鎖定：包含「即時安撫賀爾蒙噴霧」、「AI自動定步巡航」以及遠端原廠緊急求助，確保騎士與行人的絕對安全。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>試騎需要自備護具或穿特定服裝嗎？</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          試騎現場皆免費提供全套粉系專業騎行服、耐磨防滑褲、防摔護具與頭盔。建議穿著好活動的平底鞋或運動鞋前來即可！
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 (Footer) -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>🦖 霹靂暴龍售賣店</h4>
+          <p>全球首創奢華粉系恐龍坐騎專營店。致力於將遠古霸王的野性力量轉化為極致優雅的駕馭藝術，讓每位恐龍愛好者實現馳騁侏羅紀的浪漫夢想。</p>
+        </div>
+
+        <div class="footer-links">
+          <h5>快速連結</h5>
+          <ul>
+            <li><a href="#about">品牌理念</a></li>
+            <li><a href="#models">霸王龍車庫</a></li>
+            <li><a href="#booking">試騎預約</a></li>
+            <li><a href="#reviews">騎士回饋</a></li>
+            <li><a href="#faq">常見問題</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>尊榮服務</h5>
+          <ul>
+            <li><a href="#booking">VIP 試騎專案</a></li>
+            <li><a href="#models">客製化粉鑽鱗甲</a></li>
+            <li><a href="#">馴獸師到府照護</a></li>
+            <li><a href="#">全球空運交付服務</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>體驗展示中心</h5>
+          <p style="font-size:0.9rem; line-height: 1.8; color:#d1b3c4;">
+            📍 旗艦展廳：新北市暴龍大道 88 號（恐龍生態園區旁）<br>
+            📞 預約專線：(02) 8888-DINO (3466)<br>
+            ✉️ 電子信箱：vip@thunder-trex.pink<br>
+            ⏰ 營業時間：週一至週日 09:00 - 21:00
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 霹靂暴龍售賣店 (Thunder T-Rex Mounts). All Rights Reserved. 規格驅動開發作業專用網頁</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 預約成功彈窗 -->
+  <div class="modal" id="successModal">
+    <div class="modal-box">
+      <div class="modal-dino">🦖🎉</div>
+      <h3>試騎預約申請成功！</h3>
+      <p id="modalMsg">恭喜您！您的霸王龍試騎預約已成功送出。我們將於 2 小時內透過電話與您聯繫確認細節！</p>
+      <button class="btn btn-primary" onclick="closeModal()">太棒了，期待駕馭！</button>
+    </div>
+  </div>
+
+  <!-- JavaScript 交互功能 -->
+  <script>
+    // 設定預設預約日期為明天
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('rideDate');
+      if (dateInput) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        dateInput.value = `${yyyy}-${mm}-${dd}`;
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+      }
+    });
+
+    // 點選卡片直接切換表單選定型號
+    function selectModel(modelName) {
+      const select = document.getElementById('dinoSelect');
+      if (select) {
+        select.value = modelName;
+      }
+    }
+
+    // 表單送出處理
+    function handleBooking(event) {
+      event.preventDefault();
+      const name = document.getElementById('riderName').value;
+      const model = document.getElementById('dinoSelect').value;
+      const date = document.getElementById('rideDate').value;
+      const time = document.getElementById('rideTime').value;
+
+      const modalMsg = document.getElementById('modalMsg');
+      modalMsg.innerHTML = `親愛的 <strong>${name}</strong> 騎士您好：<br>您已成功預約 <strong>${model}</strong> 的試騎體驗！<br>預約時段：<strong>${date} ${time}</strong>。<br>我們的恐龍騎士管家即將致電為您保留專屬坐騎！`;
+
+      const modal = document.getElementById('successModal');
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('successModal');
+      modal.classList.remove('active');
+      document.getElementById('rideForm').reset();
+    }
+
+    // FAQ 摺疊展開效果
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      item.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
+
