@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="霹靂暴龍售賣店，尊榮霸王龍坐騎展示與 VIP 試騎預約。探索粉鑽極光暴君、櫻花狂暴速騎與璀璨女帝重裝龍。">
+  <meta name="theme-color" content="#270d20">
+  <title>霹靂暴龍售賣店 | 頂級恐龍坐騎專賣與試騎體驗</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --pink: #ff3b91;
+      --pink-dark: #dc216e;
+      --blush: #fff1f6;
+      --rose: #f8bfd8;
+      --plum: #270d20;
+      --wine: #42162f;
+      --ink: #281724;
+      --muted: #725c6a;
+      --paper: #fffafc;
+      --white: #fff;
+      --gold: #eeb967;
+      --line: #efd8e3;
+      --shadow: 0 18px 46px rgba(61, 21, 47, .12);
+      --wrap: min(1160px, calc(100% - 48px));
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: 'Noto Sans TC', sans-serif; line-height: 1.7; }
+    body, button, input, select { font-family: 'Noto Sans TC', sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button, a, input, select { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #f3a6cb; outline-offset: 4px; }
+    .wrap { width: var(--wrap); margin-inline: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--pink-dark); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow::before { width: 26px; height: 1px; background: currentColor; content: ''; }
+    .section-heading { max-width: 700px; margin: 0 auto 48px; text-align: center; }
+    .section-heading .eyebrow { justify-content: center; }
+    .section-heading h2 { margin: 0; color: var(--plum); font-size: clamp(30px, 4vw, 46px); font-weight: 900; line-height: 1.25; }
+    .section-heading p:last-child { margin: 14px auto 0; color: var(--muted); }
+    .accent { color: var(--pink); }
+
+    .site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid rgba(248,191,216,.7); background: rgba(255,250,252,.92); backdrop-filter: blur(14px); }
+    .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; min-width: 245px; align-items: center; gap: 11px; }
+    .brand-mark { display: grid; width: 44px; aspect-ratio: 1; place-items: center; border-radius: 13px; background: linear-gradient(145deg, var(--pink), #ff8abb); box-shadow: 0 7px 18px #ff3b9140; color: white; font-size: 24px; }
+    .brand-name { display: block; color: var(--plum); font-size: 15px; font-weight: 900; line-height: 1.25; }
+    .brand-sub { display: block; margin-top: 4px; color: var(--muted); font-family: Outfit, sans-serif; font-size: 9px; letter-spacing: .17em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2vw, 27px); list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: #493440; font-size: 13px; font-weight: 700; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--pink-dark); }
+    .nav-cta, .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 5px; padding: 0 20px; background: var(--pink); box-shadow: 0 8px 22px #ff3b9130; color: white; cursor: pointer; font-size: 14px; font-weight: 800; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); background: var(--pink-dark); box-shadow: 0 11px 25px #ff3b9145; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 4px; background: white; color: var(--plum); cursor: pointer; font-size: 21px; }
+
+    .hero { position: relative; overflow: hidden; min-height: 650px; background: radial-gradient(ellipse at 76% 43%, #713452 0, transparent 34%), linear-gradient(116deg, #21091b 0%, #3a142d 56%, #230b1d 100%); color: white; }
+    .hero::before, .hero::after { position: absolute; pointer-events: none; content: ''; }
+    .hero::before { inset: 0; opacity: .18; background-image: linear-gradient(120deg, transparent 48%, #ffd4e51a 49%, transparent 50%), radial-gradient(#ffe0ee 0.7px, transparent .7px); background-size: auto, 22px 22px; mask-image: linear-gradient(90deg, transparent, black); }
+    .hero::after { top: 12%; right: -80px; width: 520px; aspect-ratio: 1; border: 1px solid #ffc1db2a; border-radius: 50%; box-shadow: 0 0 0 38px #ffc1db0b, 0 0 0 78px #ffc1db08; }
+    .hero-grid { position: relative; z-index: 1; display: grid; min-height: 650px; grid-template-columns: 1.04fr .96fr; align-items: center; gap: 45px; padding-block: 68px 74px; }
+    .hero-copy { max-width: 620px; animation: rise-in .7s both; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 9px; border: 1px solid #ff9ecb66; border-radius: 999px; padding: 7px 13px; background: #ffb0d414; color: #ffd6e7; font-size: 12px; }
+    .hero h1 { margin: 23px 0 18px; font-size: clamp(40px, 5vw, 65px); font-weight: 900; letter-spacing: 0; line-height: 1.22; }
+    .hero h1 span { display: block; color: #ff82b7; }
+    .hero-copy > p { max-width: 520px; margin: 0; color: #f4dce8c9; font-size: 16px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button-outline { border: 1px solid #f8d7e6a6; background: transparent; box-shadow: none; }
+    .button-outline:hover { border-color: white; background: #ffffff14; box-shadow: none; }
+    .stats { display: flex; flex-wrap: wrap; gap: 0; margin-top: 42px; }
+    .stat { min-width: 128px; padding: 0 22px; border-left: 1px solid #fff3; }
+    .stat:first-child { padding-left: 0; border-left: 0; }
+    .stat strong { display: block; color: #ff9ac5; font-family: Outfit, sans-serif; font-size: 24px; font-weight: 800; line-height: 1.2; }
+    .stat span { display: block; margin-top: 7px; color: #f5dce7b5; font-size: 11px; }
+    .showcase { position: relative; display: grid; min-height: 445px; place-items: center; animation: rise-in .85s .12s both; }
+    .dino-orbit { position: relative; display: grid; width: min(390px, 85vw); aspect-ratio: 1; place-items: center; border: 1px solid #ffcee43b; border-radius: 50%; background: radial-gradient(circle at 48% 47%, #ff9ac62c, #711b4c1c 43%, transparent 70%); box-shadow: inset 0 0 65px #ffb6d114, 0 0 80px #ff77b21c; }
+    .dino-orbit::before, .dino-orbit::after { position: absolute; border: 1px solid #ffd2e51c; border-radius: 50%; content: ''; }
+    .dino-orbit::before { inset: 22px; }
+    .dino-orbit::after { inset: 48px; border-style: dashed; }
+    .dino-emoji { position: relative; z-index: 1; display: grid; width: 220px; aspect-ratio: 1; place-items: center; border: 1px solid #ffb3d35e; border-radius: 50%; background: radial-gradient(circle at 40% 28%, #ffafd0 0, #ea4f91 27%, #843657 69%, #3c1530 100%); box-shadow: inset 10px 12px 30px #ffffff48, 0 22px 55px #10060da8; font-size: 116px; filter: drop-shadow(0 13px 10px #1b0818aa); transition: transform .35s ease; }
+    .dino-orbit:hover .dino-emoji { transform: scale(1.07) rotate(-4deg); }
+    .orbit-label { position: absolute; z-index: 2; border: 1px solid #ffcae180; border-radius: 4px; padding: 10px 13px; background: #321127d9; box-shadow: 0 10px 28px #15071166; backdrop-filter: blur(8px); }
+    .orbit-label small { display: block; color: #ffb6d4; font-size: 9px; font-weight: 800; letter-spacing: .13em; }
+    .orbit-label strong { display: block; margin-top: 2px; font-size: 12px; }
+    .orbit-label.top { top: 12%; right: 1%; }
+    .orbit-label.bottom { bottom: 9%; left: 2%; }
+    .hero-note { position: absolute; right: 2%; bottom: 5%; color: #fbdbe9a3; font-family: Outfit, sans-serif; font-size: 10px; letter-spacing: .18em; }
+
+    .about { padding: 96px 0 70px; }
+    .about-intro { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 66px; margin-bottom: 56px; }
+    .about-mark { position: relative; display: grid; min-height: 300px; place-items: center; overflow: hidden; border-radius: 5px; background: radial-gradient(circle at 50% 45%, #ffe2ed, #f6bfd6 48%, #e792b9); }
+    .about-mark::before, .about-mark::after { position: absolute; width: 260px; aspect-ratio: 1; border: 1px solid #fff9; border-radius: 50%; content: ''; }
+    .about-mark::after { width: 205px; }
+    .about-mark span { z-index: 1; font-size: 112px; filter: drop-shadow(0 14px 10px #672d4b44); }
+    .about-stamp { position: absolute; right: 18px; bottom: 18px; z-index: 2; padding: 12px 15px; background: var(--plum); color: white; font-size: 11px; font-weight: 700; }
+    .about-copy h2 { margin: 0 0 17px; color: var(--plum); font-size: clamp(29px, 3.5vw, 42px); font-weight: 900; line-height: 1.35; }
+    .about-copy p:not(.eyebrow) { color: var(--muted); }
+    .about-copy .text-link { display: inline-block; margin-top: 8px; border-bottom: 1px solid var(--pink); padding-bottom: 3px; color: var(--pink-dark); font-size: 14px; font-weight: 800; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .feature { padding: 24px 19px 27px; border-right: 1px solid var(--line); transition: background .25s ease, transform .25s ease; }
+    .feature:last-child { border-right: 0; }
+    .feature:hover { transform: translateY(-5px); background: white; }
+    .feature-icon { display: grid; width: 43px; height: 43px; place-items: center; border-radius: 50%; background: var(--blush); font-size: 21px; }
+    .feature-num { display: block; margin-top: 16px; color: var(--pink-dark); font-family: Outfit, sans-serif; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+    .feature h3 { margin: 5px 0 8px; color: var(--plum); font-size: 16px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .models { padding: 96px 0; background: #fff0f6; }
+    .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .model-card { overflow: hidden; border: 1px solid #f2d9e4; border-radius: 5px; background: white; box-shadow: 0 10px 30px #4a153b0b; transition: transform .25s ease, box-shadow .25s ease; }
+    .model-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .model-art { position: relative; display: grid; min-height: 205px; place-items: center; overflow: hidden; background: linear-gradient(145deg, #651e48, #35132e); }
+    .model-art::before { position: absolute; width: 180px; aspect-ratio: 1; border: 1px solid #ffffff38; border-radius: 50%; box-shadow: 0 0 0 22px #ffffff0b, 0 0 0 48px #ffffff08; content: ''; }
+    .model-card:nth-child(2) .model-art { background: linear-gradient(145deg, #a63a69, #4d1c42); }
+    .model-card:nth-child(3) .model-art { background: linear-gradient(145deg, #58304b, #231622); }
+    .model-art span { z-index: 1; font-size: 92px; filter: drop-shadow(0 12px 9px #18081499); transition: transform .3s ease; }
+    .model-card:hover .model-art span { transform: scale(1.08) rotate(-3deg); }
+    .model-badge { position: absolute; top: 14px; left: 14px; z-index: 2; padding: 5px 9px; background: var(--gold); color: #321729; font-size: 10px; font-weight: 900; }
+    .model-content { padding: 20px 20px 19px; }
+    .model-meta { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 11px; }
+    .rating { color: #ac7521; font-weight: 800; }
+    .model-content h3 { margin: 7px 0 4px; color: var(--plum); font-size: 20px; font-weight: 900; }
+    .model-en { color: var(--pink-dark); font-family: Outfit, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+    .model-description { min-height: 48px; margin: 12px 0; color: var(--muted); font-size: 12px; }
+    .spec-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 13px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); list-style: none; }
+    .spec-list li { color: var(--muted); font-size: 11px; }
+    .spec-list strong { display: block; color: var(--ink); font-size: 12px; }
+    .model-buy { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin-top: 15px; }
+    .price { color: var(--plum); font-family: Outfit, sans-serif; font-size: 20px; font-weight: 800; line-height: 1.15; }
+    .price small { display: block; margin-top: 5px; color: var(--muted); font-family: 'Noto Sans TC', sans-serif; font-size: 10px; font-weight: 400; }
+    .button-small { min-height: 40px; padding: 0 13px; font-size: 12px; }
+
+    .booking { position: relative; overflow: hidden; padding: 96px 0; background: linear-gradient(125deg, #2b1024, #45162f); color: white; }
+    .booking::before { position: absolute; top: -185px; right: -130px; width: 430px; aspect-ratio: 1; border: 1px solid #ffb6d21c; border-radius: 50%; box-shadow: 0 0 0 40px #ffb6d20b, 0 0 0 85px #ffb6d208; content: ''; }
+    .booking .section-heading { position: relative; z-index: 1; }
+    .booking .section-heading h2 { color: white; }
+    .booking .section-heading p:last-child { color: #f4dce8b8; }
+    .booking .eyebrow { color: #ff9ec5; }
+    .booking-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; align-items: start; }
+    .booking-info h3 { margin: 0 0 20px; color: #fff0f6; font-size: 22px; }
+    .booking-info > p { color: #f1dce7b8; font-size: 14px; }
+    .benefits { display: grid; gap: 17px; margin: 25px 0; padding: 0; list-style: none; }
+    .benefits li { display: flex; align-items: start; gap: 11px; color: #f9e9f1; font-size: 13px; }
+    .check { flex: 0 0 22px; display: grid; width: 22px; height: 22px; place-items: center; border-radius: 50%; background: #ff78ad2b; color: #ff9fc5; font-size: 12px; }
+    .booking-quote { margin-top: 34px; border-left: 2px solid var(--pink); padding: 5px 0 5px 16px; color: #f6d9e6; font-size: 13px; }
+    .booking-quote strong { display: block; margin-top: 8px; color: #ff9fc5; font-size: 11px; }
+    .booking-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border: 1px solid #ffffff20; border-radius: 5px; padding: 26px; background: #fffafc; color: var(--ink); box-shadow: 0 20px 60px #16071145; }
+    .form-title { grid-column: 1 / -1; margin: 0 0 2px; color: var(--plum); font-size: 19px; }
+    .field { display: grid; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #503747; font-size: 12px; font-weight: 800; }
+    .field input, .field select { width: 100%; min-height: 45px; border: 1px solid #e7ccd9; border-radius: 3px; padding: 0 11px; background: white; color: var(--ink); font-size: 13px; }
+    .field input::placeholder { color: #a9939f; }
+    .field input:focus, .field select:focus { border-color: var(--pink); outline: 2px solid #ff3b9126; }
+    .form-note { grid-column: 1 / -1; margin: -1px 0 0; color: var(--muted); font-size: 10px; }
+    .booking-form .button { grid-column: 1 / -1; width: 100%; margin-top: 2px; }
+
+    .reviews { padding: 96px 0; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .review { position: relative; padding: 25px 22px 22px; border-top: 2px solid var(--pink); background: white; box-shadow: 0 12px 32px #36152b0d; }
+    .review::after { position: absolute; top: 12px; right: 17px; color: #ffe4ef; content: '“'; font-family: Georgia, serif; font-size: 70px; line-height: 1; }
+    .review-stars { color: #c58b39; font-size: 13px; letter-spacing: .1em; }
+    .review p { min-height: 92px; margin: 14px 0 20px; color: #594452; font-size: 13px; }
+    .review-person { display: flex; align-items: center; gap: 11px; }
+    .avatar { display: grid; width: 39px; height: 39px; place-items: center; border-radius: 50%; background: var(--blush); font-size: 20px; }
+    .review-person strong { display: block; color: var(--plum); font-size: 12px; }
+    .review-person span { display: block; color: var(--muted); font-size: 10px; }
+
+    .faq { padding: 84px 0 96px; background: #fff0f6; }
+    .faq-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: 65px; align-items: start; }
+    .faq-intro h2 { margin: 0; color: var(--plum); font-size: 38px; font-weight: 900; line-height: 1.3; }
+    .faq-intro > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
+    .faq-list { border-top: 1px solid #e7cbd9; }
+    .faq-item { border-bottom: 1px solid #e7cbd9; }
+    .faq-question { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 15px; border: 0; padding: 18px 0; background: transparent; color: var(--plum); cursor: pointer; text-align: left; font-size: 14px; font-weight: 800; }
+    .faq-icon { flex: 0 0 28px; display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid #e9c7d7; border-radius: 50%; color: var(--pink-dark); font-size: 19px; transition: transform .2s ease; }
+    .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s ease; }
+    .faq-answer > div { overflow: hidden; }
+    .faq-answer p { margin: 0; padding: 0 40px 0 0; color: var(--muted); font-size: 13px; }
+    .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+    .faq-item.open .faq-answer p { padding-bottom: 18px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .footer { padding: 58px 0 22px; background: #1e0a18; color: #f8e8f0; }
+    .footer-grid { display: grid; grid-template-columns: 1.35fr .8fr 1fr 1fr; gap: 34px; padding-bottom: 40px; }
+    .footer-brand .brand-name { color: white; }
+    .footer-brand .brand-sub { color: #e4c4d4; }
+    .footer-brand p, .footer-col p { color: #d9c1cead; font-size: 12px; }
+    .footer-col h3 { margin: 0 0 15px; color: #ff9fc5; font-size: 13px; }
+    .footer-col a { display: block; width: fit-content; margin: 8px 0; color: #f8e8f0cb; font-size: 12px; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 15px; border-top: 1px solid #ffffff20; padding-top: 17px; color: #d9c1ce8c; font-size: 10px; }
+
+    .modal { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 20px; background: #160810b8; backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity .2s ease, visibility .2s ease; }
+    .modal.open { opacity: 1; visibility: visible; }
+    .modal-card { width: min(440px, 100%); transform: translateY(12px) scale(.96); border: 1px solid #f9c6dc; border-radius: 5px; padding: 35px 30px 29px; background: var(--paper); box-shadow: 0 25px 80px #10050c88; text-align: center; transition: transform .25s ease; }
+    .modal.open .modal-card { transform: translateY(0) scale(1); }
+    .modal-dino { font-size: 52px; }
+    .modal-card h2 { margin: 8px 0; color: var(--plum); font-size: 25px; }
+    .modal-card p { margin: 8px 0 22px; color: var(--muted); font-size: 14px; }
+    .modal-details { margin: 0 0 22px; border-block: 1px solid var(--line); padding: 12px; color: var(--plum); font-size: 13px; font-weight: 700; }
+
+    @keyframes rise-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 1000px) {
+      .nav-links { gap: 13px; }
+      .nav-links a { font-size: 12px; }
+      .brand { min-width: auto; }
+      .nav-cta { padding-inline: 14px; font-size: 12px; }
+      .hero-grid { gap: 20px; }
+      .booking-grid { gap: 30px; }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+      .footer-col:last-child { grid-column: 2 / -1; }
+    }
+    @media (max-width: 760px) {
+      :root { --wrap: min(100% - 36px, 560px); }
+      html { scroll-padding-top: 72px; }
+      .nav { min-height: 68px; }
+      .brand-name { font-size: 13px; }
+      .brand-sub { font-size: 8px; }
+      .brand-mark { width: 40px; }
+      .menu-toggle { display: grid; place-items: center; margin-left: auto; }
+      .nav-cta { display: none; }
+      .nav-links { position: absolute; top: 67px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; border-bottom: 1px solid var(--line); padding: 8px 18px 14px; background: var(--paper); box-shadow: 0 12px 18px #3d152f12; }
+      .nav-links.open { display: grid; }
+      .nav-links a { display: block; padding: 10px 8px; font-size: 14px; }
+      .hero-grid { min-height: 0; grid-template-columns: 1fr; gap: 12px; padding-block: 60px 42px; }
+      .hero h1 { font-size: clamp(37px, 9vw, 52px); }
+      .hero-copy > p { font-size: 14px; }
+      .stats { margin-top: 31px; }
+      .stat { min-width: 0; flex: 1; padding-inline: 12px; }
+      .stat strong { font-size: 20px; }
+      .stat span { font-size: 10px; }
+      .showcase { min-height: 330px; }
+      .dino-orbit { width: min(300px, 78vw); }
+      .dino-emoji { width: 170px; font-size: 92px; }
+      .orbit-label.top { right: -1%; }
+      .orbit-label.bottom { left: -1%; }
+      .hero-note { display: none; }
+      .about, .models, .reviews { padding-block: 72px; }
+      .about-intro { grid-template-columns: 1fr; gap: 30px; margin-bottom: 37px; }
+      .about-mark { min-height: 235px; }
+      .about-mark span { font-size: 90px; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .feature { padding: 19px 13px 22px; }
+      .feature:nth-child(2) { border-right: 0; }
+      .feature:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .section-heading { margin-bottom: 34px; }
+      .model-grid { grid-template-columns: 1fr; gap: 15px; }
+      .model-art { min-height: 190px; }
+      .model-description { min-height: 0; }
+      .booking { padding: 72px 0; }
+      .booking-grid { grid-template-columns: 1fr; gap: 27px; }
+      .booking-form { padding: 20px 16px; }
+      .review-grid { grid-template-columns: 1fr; }
+      .review p { min-height: 0; }
+      .faq { padding: 70px 0; }
+      .faq-layout { grid-template-columns: 1fr; gap: 28px; }
+      .faq-intro h2 { font-size: 32px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px 20px; }
+      .footer-col:last-child { grid-column: auto; }
+    }
+    @media (max-width: 430px) {
+      .booking-form { grid-template-columns: 1fr; }
+      .field.full, .form-title, .form-note, .booking-form .button { grid-column: 1; }
+      .stats { gap: 8px 0; }
+      .stat { padding-inline: 9px; }
+      .stat strong { font-size: 17px; }
+      .hero-actions .button { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="主要導覽">
+      <a class="brand" href="#hero" aria-label="霹靂暴龍售賣店首頁">
+        <span class="brand-mark" aria-hidden="true">🦖</span>
+        <span><span class="brand-name">霹靂暴龍售賣店</span><span class="brand-sub">THUNDER T-REX MOUNTS</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">品牌傳奇</a></li>
+        <li><a href="#models">霸王龍車庫</a></li>
+        <li><a href="#features">駕馭特色</a></li>
+        <li><a href="#reviews">騎手評價</a></li>
+        <li><a href="#faq">常見問題</a></li>
+        <li><a href="#booking">試騎預約</a></li>
+      </ul>
+      <a class="nav-cta" href="#booking">立即預約試騎 <span aria-hidden="true">⚡</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="hero-grid wrap">
+        <div class="hero-copy">
+          <div class="hero-tag"><span aria-hidden="true">✦</span> 頂級高階霸王龍坐騎・粉鑽奢華版上市</div>
+          <h1 id="heroTitle">極速咆哮 · 尊榮駕馭！<span>征服地表最強恐龍坐騎</span></h1>
+          <p>遠古王者的力量，遇上玫瑰金的優雅。挑選專屬於你的旗艦暴龍，從第一聲咆哮開始，改寫每一次出發。</p>
+          <div class="hero-actions">
+            <a class="button" href="#booking">搶先預約免費試騎 <span aria-hidden="true">➜</span></a>
+            <a class="button button-outline" href="#models">探索三款霸王龍</a>
+          </div>
+          <div class="stats" aria-label="品牌性能標章">
+            <div class="stat"><strong>100%</strong><span>純種暴龍血統</span></div>
+            <div class="stat"><strong>120 km/h</strong><span>頂級奔馳時速</span></div>
+            <div class="stat"><strong>0 事故</strong><span>AI 神經鞍座防護</span></div>
+          </div>
+        </div>
+        <div class="showcase" aria-label="粉鑽極光暴君旗艦展示">
+          <div class="dino-orbit">
+            <span class="dino-emoji" aria-hidden="true">🦖</span>
+            <div class="orbit-label top"><small>年度旗艦首選</small><strong>限量交付 · TX-9</strong></div>
+            <div class="orbit-label bottom"><small>粉鑽極光暴君</small><strong>咬合力 4.5 噸 · S+ 級</strong></div>
+          </div>
+          <span class="hero-note">DESIGNED TO RULE THE ROAD</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about wrap" id="about">
+      <div class="about-intro">
+        <div class="about-mark" aria-hidden="true"><span>🦖</span><div class="about-stamp">THUNDER T-REX<br>EST. 2026</div></div>
+        <div class="about-copy">
+          <p class="eyebrow">OUR LEGEND</p>
+          <h2>遠古王者的力量，<br>為你的日常<span class="accent">加冕。</span></h2>
+          <p>我們相信，真正的旗艦不只令人仰望，更懂得與騎士並肩。霹靂暴龍以基因溫馴科技、神經感應鞍座與精緻訂製工藝，讓霸王龍的每一次奔馳都兼具力量與安心。</p>
+          <p>粉鑽鱗甲、玫瑰金細節，還有只為你而生的默契。從第一次靠近，到共同征服地表，尊榮駕馭就此開始。</p>
+          <a class="text-link" href="#features">認識每一項駕馭特色　→</a>
+        </div>
+      </div>
+      <div class="feature-grid" id="features">
+        <article class="feature"><span class="feature-icon" aria-hidden="true">🧠</span><span class="feature-num">01 / CONTROL</span><h3>神經感應智慧鞍座</h3><p>腦波微電流感測，意念合一，輕觸韁繩即可精準轉向與加速。</p></article>
+        <article class="feature"><span class="feature-icon" aria-hidden="true">🌸</span><span class="feature-num">02 / COUTURE</span><h3>粉系尊榮高階美學</h3><p>粉紅珍珠光澤鱗甲與玫瑰金配件，霸氣與時尚並存。</p></article>
+        <article class="feature"><span class="feature-icon" aria-hidden="true">🛡️</span><span class="feature-num">03 / SAFETY</span><h3>多重安全鎖定系統</h3><p>自動避障、防跌氣囊與基因溫馴晶片，全程守護騎士。</p></article>
+        <article class="feature"><span class="feature-icon" aria-hidden="true">⚡</span><span class="feature-num">04 / POWER</span><h3>霹靂級推進爆發力</h3><p>強化腿部肌群，0–100 km/h 加速僅需 3.2 秒。</p></article>
+      </div>
+    </section>
+
+    <section class="models" id="models">
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow">THE FLAGSHIP GARAGE</p><h2>找到你的<span class="accent">專屬坐騎</span></h2><p>三種王者個性，皆以頂級工藝與專業馴養打造。</p></div>
+        <div class="model-grid">
+          <article class="model-card">
+            <div class="model-art"><span aria-hidden="true">🦖</span><span class="model-badge">BEST SELLER</span></div>
+            <div class="model-content">
+              <div class="model-meta"><span>高階旗艦・全地形制霸</span><span class="rating">★ 4.9 · 128 位騎士</span></div>
+              <h3>粉鑽極光暴君</h3><span class="model-en">AURORA TX</span>
+              <p class="model-description">稀有粉鑽奈米鱗甲，日光下流轉夢幻極光；親人護主，從容征服各種地形。</p>
+              <ul class="spec-list"><li>雙人真皮減震豪華鞍</li><li><strong>115 km/h</strong>極限時速</li><li>高蛋白生機恐龍糧</li><li><strong>S 級</strong>溫馴適應度</li></ul>
+              <div class="model-buy"><div class="price">$8,880,000<small>專屬訂製</small></div><button class="button button-small" type="button" data-model="粉鑽極光暴君 TX">預約試騎　→</button></div>
+            </div>
+          </article>
+          <article class="model-card">
+            <div class="model-art"><span aria-hidden="true">🦖</span><span class="model-badge">TRACK EDITION</span></div>
+            <div class="model-content">
+              <div class="model-meta"><span>羽量輕裝・競速穿梭</span><span class="rating">★ 5.0 · 89 位騎士</span></div>
+              <h3>櫻花狂暴速騎</h3><span class="model-en">SAKURA SPRINT</span>
+              <p class="model-description">流線骨骼搭配粉色碳纖維背鰭，靈敏俐落，為速度與彎道而生。</p>
+              <ul class="spec-list"><li>單人包覆式防滾鞍</li><li><strong>130 km/h</strong>極限時速</li><li>高能濃縮果肉配方</li><li><strong>A+ 級</strong>溫馴適應度</li></ul>
+              <div class="model-buy"><div class="price">$7,200,000<small>專屬訂製</small></div><button class="button button-small" type="button" data-model="櫻花狂暴速騎 Sprint">預約試騎　→</button></div>
+            </div>
+          </article>
+          <article class="model-card">
+            <div class="model-art"><span aria-hidden="true">🦖</span><span class="model-badge">GRAND TOURER</span></div>
+            <div class="model-content">
+              <div class="model-meta"><span>重裝豪華・領袖尊榮</span><span class="rating">★ 4.9 · 64 位騎士</span></div>
+              <h3>璀璨女帝重裝龍</h3><span class="model-en">EMPRESS ROSE</span>
+              <p class="model-description">威儀體態披覆深粉金屬甲冑，全自動液壓平台帶來無可比擬的尊爵巡航。</p>
+              <ul class="spec-list"><li>四人景觀尊爵平台</li><li><strong>95 km/h</strong>極限時速</li><li>頂級黑安格斯鮮肉</li><li><strong>S+ 級</strong>溫馴適應度</li></ul>
+              <div class="model-buy"><div class="price">$12,000,000<small>專屬訂製</small></div><button class="button button-small" type="button" data-model="璀璨女帝重裝龍 Rose">預約試騎　→</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow">VIP TEST RIDE</p><h2>與王者相遇，從<span class="accent">預約開始</span></h2><p>預約專屬體驗時段，讓專業馴獸師陪你完成第一次駕馭。</p></div>
+        <div class="booking-grid">
+          <div class="booking-info">
+            <h3>每一場試騎，都是尊榮禮遇</h3>
+            <p>從裝備到馴養指導，為你的首次騎乘做好萬全準備。</p>
+            <ul class="benefits">
+              <li><span class="check">✓</span><span>免費贈送尊榮粉紅騎士頭盔與專屬手套</span></li>
+              <li><span class="check">✓</span><span>專業馴獸師一對一指導與口令教學</span></li>
+              <li><span class="check">✓</span><span>包含 1 億元暴龍駕馭公眾意外安全保險</span></li>
+              <li><span class="check">✓</span><span>試騎完成即頒發初級恐龍騎士認證</span></li>
+            </ul>
+            <div class="booking-quote">不是每一次出發都需要目的地，有時，只需要一位並肩的王者。<strong>霹靂暴龍 VIP 試騎體驗</strong></div>
+          </div>
+          <form class="booking-form" id="bookingForm">
+            <h3 class="form-title">預約你的 VIP 試騎</h3>
+            <div class="field"><label for="riderName">騎士姓名 *</label><input id="riderName" name="riderName" type="text" autocomplete="name" placeholder="請輸入姓名" required></div>
+            <div class="field"><label for="riderPhone">聯絡電話 *</label><input id="riderPhone" name="riderPhone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+()\- ]{8,20}" placeholder="09XX-XXX-XXX" required></div>
+            <div class="field"><label for="dinoSelect">預約坐騎 *</label><select id="dinoSelect" name="dinoSelect" required><option value="" disabled selected>請選擇霸王龍型號</option><option>粉鑽極光暴君 TX</option><option>櫻花狂暴速騎 Sprint</option><option>璀璨女帝重裝龍 Rose</option></select></div>
+            <div class="field"><label for="rideDate">預約日期 *</label><input id="rideDate" name="rideDate" type="date" required></div>
+            <div class="field"><label for="rideTime">試騎時段 *</label><select id="rideTime" name="rideTime" required><option value="" disabled selected>請選擇時段</option><option>上午場 10:00–11:30</option><option>下午場 14:30–16:00</option><option>黃昏夕陽狂飆場 17:00–18:30</option></select></div>
+            <div class="field"><label for="experienceLevel">騎乘經驗</label><select id="experienceLevel" name="experienceLevel"><option>新手小白</option><option>進階騎手</option><option>狂暴大師</option></select></div>
+            <p class="form-note">* 必填欄位。日期最早可預約明日，送出後將由專人與你確認。</p>
+            <button class="button" type="submit">立即送出試騎預約單 <span aria-hidden="true">🚀</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow">RIDER STORIES</p><h2>每一聲咆哮，都有<span class="accent">騎士見證</span></h2><p>聽聽已經與暴龍並肩出發的騎士怎麼說。</p></div>
+        <div class="review-grid">
+          <article class="review"><div class="review-stars" aria-label="5 顆星">★★★★★</div><p>原以為會很可怕，沒想到粉鑽暴君超聽話。意念鞍座轉向精準，走到哪裡回頭率都超高！</p><div class="review-person"><span class="avatar" aria-hidden="true">👩🏻</span><div><strong>林小姐</strong><span>恐龍重機愛好者</span></div></div></article>
+          <article class="review"><div class="review-stars" aria-label="5 顆星">★★★★★</div><p>帶家人一起體驗，粉紅外觀完全沒有距離感。狂暴和溫馴的反差太迷人，試騎結束就直接下訂。</p><div class="review-person"><span class="avatar" aria-hidden="true">👨🏻</span><div><strong>張先生</strong><span>科技公司 CEO</span></div></div></article>
+          <article class="review"><div class="review-stars" aria-label="5 顆星">★★★★★</div><p>櫻花狂暴速騎過彎的爆發力很驚人，平常又像大狗狗一樣會蹭手撒嬌，完全是夢幻坐騎。</p><div class="review-person"><span class="avatar" aria-hidden="true">🧑🏻</span><div><strong>陳教練</strong><span>極限運動選手</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="faq-layout wrap">
+        <div class="faq-intro"><p class="eyebrow">GOOD TO KNOW</p><h2>出發之前，<br>先解答你的<span class="accent">好奇。</span></h2><p>從騎乘資格到日常照護，重要資訊一次整理。</p></div>
+        <div class="faq-list">
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>需要什麼騎乘執照才能體驗？</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>完成門市約 2 小時的安全與馴養培訓後，即可取得特種生物坐騎騎乘憑證；首次體驗由馴獸師全程陪同。</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>平時飼料與維護費用大約多少？</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>可依坐騎習慣選擇凍乾或鮮肉，日常照護每月約新台幣 12,000 元。旗艦車款提供終身保固與鱗甲拋光服務。</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>暴龍情緒不穩時，有哪些安全機制？</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>坐騎具備安撫賀爾蒙、AI 自動定步與遠端求助三重安全鎖定；試騎全程亦有專業馴獸師同行。</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>參加試騎需要自備裝備或特殊服裝嗎？</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>門市免費提供完整粉系專業騎行裝備與護具，穿著舒適衣物及平底鞋即可參加。</p></div></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="brand" href="#hero"><span class="brand-mark" aria-hidden="true">🦖</span><span><span class="brand-name">霹靂暴龍售賣店</span><span class="brand-sub">THUNDER T-REX MOUNTS</span></span></a><p>讓遠古王者與當代美學同行，為每一位騎士打造獨一無二的尊榮駕馭體驗。</p></div>
+        <div class="footer-col"><h3>探索本站</h3><a href="#about">品牌傳奇</a><a href="#models">霸王龍車庫</a><a href="#features">駕馭特色</a><a href="#reviews">騎手評價</a></div>
+        <div class="footer-col"><h3>VIP 尊榮服務</h3><a href="#booking">預約試騎</a><a href="#booking">專屬訂製諮詢</a><a href="#faq">照護常見問題</a><p>每日 10:00–20:00 開放預約</p></div>
+        <div class="footer-col"><h3>旗艦展示中心</h3><p>新北市暴龍大道 88 號</p><p>(02) 8888-DINO</p><p>hello@thundertrex.tw</p></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 霹靂暴龍售賣店 (Thunder T-Rex Mounts). All Rights Reserved.</span><a href="#hero">回到頁首 ↑</a></div>
+    </div>
+  </footer>
+
+  <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalMessage">
+    <div class="modal-card"><div class="modal-dino" aria-hidden="true">🦖🎉</div><h2 id="modalTitle">預約申請已送出！</h2><p id="modalMessage">我們的 VIP 專員將盡快與你聯繫。</p><div class="modal-details" id="modalDetails"></div><button class="button" id="closeModal" type="button">完成，期待出發</button></div>
+  </div>
+
+  <script>
+    const form = document.querySelector('#bookingForm');
+    const dateInput = document.querySelector('#rideDate');
+    const modelSelect = document.querySelector('#dinoSelect');
+    const modal = document.querySelector('#successModal');
+    const modalMessage = document.querySelector('#modalMessage');
+    const modalDetails = document.querySelector('#modalDetails');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('#navLinks');
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowString = [tomorrow.getFullYear(), String(tomorrow.getMonth() + 1).padStart(2, '0'), String(tomorrow.getDate()).padStart(2, '0')].join('-');
+    dateInput.min = tomorrowString;
+    dateInput.value = tomorrowString;
+
+    document.querySelectorAll('[data-model]').forEach((button) => {
+      button.addEventListener('click', () => {
+        modelSelect.value = button.dataset.model;
+        document.querySelector('#booking').scrollIntoView({ behavior: 'smooth' });
+        modelSelect.focus({ preventScroll: true });
+      });
+    });
+
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isOpen = item.classList.toggle('open');
+        button.setAttribute('aria-expanded', String(isOpen));
+      });
+    });
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? '關閉導覽選單' : '開啟導覽選單');
+    });
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', '開啟導覽選單');
+    }));
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const riderName = form.elements.riderName.value.trim();
+      const modelName = modelSelect.value;
+      const date = dateInput.value;
+      const time = form.elements.rideTime.value;
+      modalMessage.textContent = `${riderName}，專員將盡快與你確認試騎安排。`;
+      modalDetails.textContent = `${modelName}　・　${date}　・　${time}`;
+      modal.classList.add('open');
+      document.querySelector('#closeModal').focus();
+    });
+
+    function closeBookingModal() {
+      modal.classList.remove('open');
+      form.reset();
+      dateInput.value = tomorrowString;
+      document.querySelector('#riderName').focus();
+    }
+    document.querySelector('#closeModal').addEventListener('click', closeBookingModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeBookingModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) closeBookingModal();
+    });
+  </script>
+</body>
+</html>
